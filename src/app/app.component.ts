@@ -12,6 +12,8 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  isVisible = true;
+
   posts: Post[] = [
     { title: 'Post 1', text: 'Text 1', id: 1 },
     { title: 'Post 2  ', text: 'Text 2 about new technology', id: 2 },
