@@ -1,3 +1,54 @@
+<input type="text" [(ngModel)="search">
+<div class="card" *ngFor="let h of human">
+        <h2>{{h.name|uppercase}}</h2>
+        <h3>{{h.job}}</h3>
+        <h3>{{h.age}}</h3>
+
+</div>
+
+<!-- <div class="container">
+
+
+        <h1>My Own Angular</h1>
+
+        <p>{{'what is u name' |str}}</p>
+
+        <p> {{10|mult}}</p>
+        <p> {{30|mult}}</p>
+        <p> {{40|mult}}</p>
+        <p> {{50|mult}}</p>
+
+
+</div>
+
+<div class="container">
+        <h1>Angular Pipe</h1>
+        <p>{{e|number:'1.1-1'}}</p>
+        <p>{{e|number:'4.1-4'}}</p>
+        <p>{{e|number:'1.1-9'}}</p>
+        <p>{{e|number:'1.0-0'}}</p>
+</div>
+
+<div class="container">
+        <p>{{str | uppercase}}</p>
+        <p>{{str | titlecase|slice:0:9}}</p>
+
+</div>
+
+<div class="container">
+        <p>{{date |date:'MMMM yyy dd HH:mm:ss '}}</p>
+</div>
+<div class="container">
+        <p>{{name|json}}</p>
+</div>
+
+
+<div class="container">
+        <p>{{float}}</p>
+        <p>{{float |percent :"4.0-0"}}</p>
+        <p>{{float|currency}}</p>
+</div>
+
 <div>
         <h1>Angular</h1>
         <p [appStyle]="'red'"
@@ -22,4 +73,4 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet ducimus autem pariatur quae molestias
                 reiciendis, sit ut est ad sint!
         </p>
-</div>
+</div> -->

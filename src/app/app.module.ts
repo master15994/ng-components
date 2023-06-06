@@ -7,6 +7,8 @@ import { PostComponent } from './post/post.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { FormsModule } from '@angular/forms';
 import { StyleDirective } from './directives/style.directive';
+import { MultByPipe } from './pipes/mult.by-pipe';
+import { StrPipe } from './pipes/str.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { StyleDirective } from './directives/style.directive';
     PostComponent,
     PostFormComponent,
     StyleDirective,
+    MultByPipe,
+    StrPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

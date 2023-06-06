@@ -9,6 +9,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { Post } from '../app.component';
+import { PostService } from '../post.service';
 
 @Component({
   selector: 'app-post-form',
@@ -16,7 +17,7 @@ import { Post } from '../app.component';
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
-  @Output() onAdd: EventEmitter<Post> = new EventEmitter<Post>();
+  constructor(private postService: PostService) {}
 
   @ViewChild('titlefocus', { static: false })
   inputRef!: ElementRef;
@@ -35,7 +36,7 @@ export class PostFormComponent implements OnInit {
         text: this.text,
       };
 
-      this.onAdd.emit(post);
+      this.postService.addPost(post);
 
       console.log('New post', post);
       this.text = this.title = '';
