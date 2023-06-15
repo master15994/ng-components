@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 export interface Humans {
   name: string;
@@ -17,13 +19,29 @@ export interface Post {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  human: Humans[] = [
-    { name: 'Alex', job: 'teacher', age: 52 },
-    { name: 'Kate', job: 'head-master', age: 21 },
-    { name: 'Pat', job: 'it-manager', age: 25 },
-  ];
+export class AppComponent implements OnInit {
+  formGroup = new FormGroup({
+    name: new FormControl(null),
+    surname: new FormControl(null),
+    check: new FormControl(false),
+  });
+
+  ngOnInit(): void {
+    this.formGroup.valueChanges
+      .pipe(debounceTime(400))
+      .subscribe((res) => console.log(res));
+  }
+
+  sumbit() {
+    console.log(this.formGroup.value);
+  }
 }
+//   human: Humans[] = [
+//     { name: 'Alex', job: 'teacher', age: 52 },
+//     { name: 'Kate', job: 'head-master', age: 21 },
+//     { name: 'Pat', job: 'it-manager', age: 25 },
+//   ];
+// }
 // }
 
 //   e: number = Math.E;
