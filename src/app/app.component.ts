@@ -1,18 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { debounceTime } from 'rxjs';
-
-export interface Humans {
-  name: string;
-  job: string;
-  age: number;
-}
-
-export interface Post {
-  title: string;
-  text: string;
-  id?: number;
-}
+import { Todo } from './models/todo';
+import { ModelsService } from './models.service';
 
 @Component({
   selector: 'app-root',
@@ -20,22 +8,28 @@ export interface Post {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  formGroup = new FormGroup({
-    name: new FormControl(null),
-    surname: new FormControl(null),
-    check: new FormControl(false),
-  });
+  data!: Todo[];
+
+  constructor(private modalServise: ModelsService) {}
 
   ngOnInit(): void {
-    this.formGroup.valueChanges
-      .pipe(debounceTime(400))
-      .subscribe((res) => console.log(res));
-  }
-
-  sumbit() {
-    console.log(this.formGroup.value);
+    this.modalServise.getData().subscribe((res) => (this.data = res));
   }
 }
+// formGroup = new FormGroup({
+//   name: new FormControl(null),
+//   surname: new FormControl(null),
+//   check: new FormControl(false),
+// });
+// ngOnInit(): void {
+//   this.formGroup.valueChanges
+//     .pipe(debounceTime(400))
+//     .subscribe((res) => console.log(res));
+// }
+// sumbit() {
+//   console.log(this.formGroup.value);
+// }
+
 //   human: Humans[] = [
 //     { name: 'Alex', job: 'teacher', age: 52 },
 //     { name: 'Kate', job: 'head-master', age: 21 },

@@ -1,6 +1,1 @@
-<div [formGroup]="formGroup">
-        <input type="text" formControlName="name">
-        <input type="text" formControlName="surname">
-        <input type="text" formControlName="check">
-        <button (click)="sumbit()">click</button>
-</div>
+<div *ngFor="let todo of data">{{todo|json}}</div>
