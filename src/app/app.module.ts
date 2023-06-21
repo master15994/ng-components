@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StyleDirective } from './directive/style.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, StyleDirective],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
