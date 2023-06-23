@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription, filter, interval, map } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +9,26 @@ import { Subscription, filter, interval, map } from 'rxjs';
 export class AppComponent {
   sub!: Subscription;
   constructor() {
-    const intervalStream$ = interval(1000);
-    this.sub = intervalStream$
-      .pipe(
-        filter((res) => res % 2 === 0),
-        map((res) => `Mapped ${res}`)
-      )
-      .subscribe((value) => console.log(value));
-  }
+    const stream$ = new Observable((observe) => {
+      setTimeout(() => {
+        observe.next(1);
+      }, 400);
 
+      setTimeout(() => {
+        observe.complete();
+      }, 900);
+
+      setTimeout(() => {
+        observe.error('smt go wrong');
+      }, 1000);
+    });
+
+    stream$.subscribe(
+      (res) => console.log('Next:', res),
+      (error) => console.log('error', error),
+      () => console.log('complete ')
+    );
+  }
   stop() {
     this.sub.unsubscribe();
   }
