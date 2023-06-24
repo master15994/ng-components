@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { state, style, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('box', [
+      state('start', style({ background: 'blue' })),
+      state(
+        'end',
+        style({
+          background: 'red',
+          transform: 'scale(1.2)',
+        })
+      ),
+    ]),
+  ],
 })
 export class AppComponent {
-  sub!: Subscription;
+  boxState = 'end';
 
-  stream$: Subject<number> = new Subject<number>();
-  counter = 0;
-  constructor() {
-    this.sub = this.stream$.subscribe((res) => {
-      console.log('subcribe', res);
-    });
-  }
-
-  stop() {
-    this.sub.unsubscribe();
-  }
-
-  next() {
-    this.counter++;
-    this.stream$.next(this.counter);
+  animate() {
+    this.boxState = this.boxState === 'end' ? 'start' : 'end';
   }
 }

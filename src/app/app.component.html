@@ -1,6 +1,10 @@
-<div>
-    <h1>RXJS</h1>
+<button (click)="animate()">Animate</button>
 
-    <button (click)="stop()">stop</button>
-    <button (click)="next()">next value</button>
+<hr />
+
+<div class="wrap">
+
+
+    <div class="box" [@box]="boxState"></div>
+
 </div>
